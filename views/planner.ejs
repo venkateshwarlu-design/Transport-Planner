@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Enter your starting point and destination to see transport options.">
+  <title>Journey planner | Transport Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Transport Planner home"><span class="brand-mark" aria-hidden="true">TP</span><span>Transport Planner</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/planner" aria-current="page">Journey planner</a>
+      <a href="/about">About</a>
+    </nav>
+    <a class="header-action" href="/planner">Plan a trip <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="page-main planner-main">
+    <div class="page-heading">
+      <p class="eyebrow"><span class="eyebrow-rule"></span> LET'S GET YOU MOVING</p>
+      <h1>Where are you<br>headed?</h1>
+      <p>Tell us the start, the destination, and how you like to travel.</p>
+    </div>
+
+    <form class="journey-form" action="/plan" method="post">
+      <% if (error) { %>
+        <p class="form-error" role="alert"><%= error %></p>
+      <% } %>
+      <div class="location-fields">
+        <div class="field-group">
+          <label for="from">Starting location</label>
+          <input id="from" name="from" type="text" placeholder="e.g. Central Station" value="<%= formData.from || '' %>" required maxlength="100" autocomplete="off">
+        </div>
+        <button class="swap-button" type="button" data-swap aria-label="Swap starting location and destination">Swap</button>
+        <div class="field-group">
+          <label for="to">Destination</label>
+          <input id="to" name="to" type="text" placeholder="e.g. Riverside Market" value="<%= formData.to || '' %>" required maxlength="100" autocomplete="off">
+        </div>
+      </div>
+      <div class="field-group transport-field">
+        <label for="transportType">How would you like to travel?</label>
+        <select id="transportType" name="transportType" required>
+          <option value="" disabled <%= !formData.transportType ? 'selected' : '' %>>Choose a transport type</option>
+          <% transportTypes.forEach((type) => { %>
+            <option value="<%= type %>" <%= formData.transportType === type ? 'selected' : '' %>><%= type %></option>
+          <% }) %>
+        </select>
+      </div>
+      <button class="button button-dark form-submit" type="submit">Find Transport <span aria-hidden="true">→</span></button>
+      <p class="form-footnote">Estimates are examples for this mini project, not live travel data.</p>
+    </form>
+
+    <div class="planner-aside"><span class="aside-mark" aria-hidden="true">↗</span><p>Small trip or cross-town dash, start with the route and take it from there.</p></div>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true">TP</span><span>Transport Planner</span></a>
+    <span class="footer-note">A student project with sample estimates.</span>
+    <span class="footer-copy">© <span data-current-year></span> Transport Planner</span>
+  </footer>
+  <script src="/js/script.js" defer></script>
+</body>
+</html>

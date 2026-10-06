@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sample transport choices for your journey.">
+  <title>Your route | Transport Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Transport Planner home"><span class="brand-mark" aria-hidden="true">TP</span><span>Transport Planner</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/planner" aria-current="page">Journey planner</a>
+      <a href="/about">About</a>
+    </nav>
+    <a class="header-action" href="/planner">Plan a trip <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="page-main results-main">
+    <div class="results-heading">
+      <div class="page-heading">
+        <p class="eyebrow"><span class="eyebrow-rule"></span> YOUR ROUTE IS READY</p>
+        <h1>A few ways<br>to get there.</h1>
+      </div>
+      <a class="text-link" href="/planner">Edit journey <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <section class="route-summary" aria-labelledby="summary-title">
+      <div class="summary-route">
+        <p class="summary-label" id="summary-title">YOUR JOURNEY</p>
+        <div class="route-point"><span class="route-dot route-dot-start"></span><div><span class="route-caption">FROM</span><strong><%= journey.from %></strong></div></div>
+        <div class="route-line" aria-hidden="true"></div>
+        <div class="route-point"><span class="route-dot route-dot-end"></span><div><span class="route-caption">TO</span><strong><%= journey.to %></strong></div></div>
+      </div>
+      <div class="summary-estimate">
+        <p class="summary-label">YOUR SELECTED TRANSPORT</p>
+        <strong class="summary-mode"><%= journey.transportType %></strong>
+        <div class="summary-stats">
+          <div><span>EST. TIME</span><strong><%= options[0].time %></strong></div>
+          <div><span>EST. FARE</span><strong><%= typeof options[0].fare === 'number' ? `₹${options[0].fare}` : options[0].fare %></strong></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="options-heading">
+      <div><p class="eyebrow">SAMPLE OPTIONS</p><h2><%= journey.transportType %> services</h2></div>
+      <span class="option-count"><%= options.length %> options</span>
+    </div>
+    <section class="option-grid" aria-label="Available transport options">
+      <% options.forEach((option, index) => { %>
+        <article class="option-card <%= index === 0 ? 'option-featured' : '' %>">
+          <div class="option-card-top"><span class="option-type"><%= journey.transportType %></span><span class="availability"><span></span><%= option.availability %></span></div>
+          <h3><%= option.operator %></h3>
+          <p class="option-route"><%= option.route %></p>
+          <div class="option-metrics">
+            <div><span>TRAVEL TIME</span><strong><%= option.time %></strong></div>
+            <div><span>DISTANCE</span><strong><%= option.distance %></strong></div>
+            <div><span>EST. FARE</span><strong><%= typeof option.fare === 'number' ? `₹${option.fare}` : option.fare %></strong></div>
+          </div>
+          <% if (index === 0) { %><span class="sample-tag">Suggested estimate</span><% } %>
+        </article>
+      <% }) %>
+    </section>
+    <p class="results-disclaimer">Hyderabad-Delhi uses a dedicated long-distance sample. Other city pairs use generic local-trip demo values. No live routes, schedules, fares, or availability are used.</p>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true">TP</span><span>Transport Planner</span></a>
+    <span class="footer-note">A student project with sample estimates.</span>
+    <span class="footer-copy">© <span data-current-year></span> Transport Planner</span>
+  </footer>
+  <script src="/js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn about the Transport Planner college mini project.">
+  <title>About | Transport Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Transport Planner home"><span class="brand-mark" aria-hidden="true">TP</span><span>Transport Planner</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/planner">Journey planner</a>
+      <a href="/about" aria-current="page">About</a>
+    </nav>
+    <a class="header-action" href="/planner">Plan a trip <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="page-main about-main">
+    <div class="about-heading">
+      <p class="eyebrow"><span class="eyebrow-rule"></span> A LITTLE ABOUT THIS PROJECT</p>
+      <h1>Travel planning,<br>made approachable.</h1>
+    </div>
+    <section class="about-content">
+      <p class="about-lead">Transport Planner is a small college mini project built around one everyday question: what's a practical way to get from here to there?</p>
+      <div class="about-details">
+        <div class="about-detail"><span class="detail-index">01 / THE IDEA</span><p>Enter a starting point, destination, and preferred transport type. The planner returns sample services with estimated time, distance, fare, and availability.</p></div>
+        <div class="about-detail"><span class="detail-index">02 / HOW IT WORKS</span><p>Express handles the routes and form submission. EJS renders each page and the journey results from hardcoded JavaScript data. There is no database or account system.</p></div>
+        <div class="about-detail"><span class="detail-index">03 / A NOTE ON ESTIMATES</span><p>All travel details are illustrative examples for learning purposes. They are not live schedules, fares, or availability information.</p></div>
+      </div>
+      <a class="button button-dark" href="/planner">Plan Your Journey <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand-footer" href="/"><span class="brand-mark" aria-hidden="true">TP</span><span>Transport Planner</span></a>
+    <span class="footer-note">A student project with sample estimates.</span>
+    <span class="footer-copy">© <span data-current-year></span> Transport Planner</span>
+  </footer>
+  <script src="/js/script.js" defer></script>
+</body>
+</html>
